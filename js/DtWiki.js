@@ -92,9 +92,11 @@ DtWiki.hasHook = function(name) {
 	return DtWiki.hooks[name] != null;
 };
 
-DtWiki.loadScriptSync('js/lib/jquery-1.7.1.min.js');
-DtWiki.loadScriptSync('js/core/loader.js');
-
 window.onload = function() {
 	DtWiki.runHook('load');
 };
+
+DtWiki.loadScriptSync('js/lib/jquery-1.7.1.min.js');
+DtWiki.loadScriptSync('js/lib/URI.js');
+DtWiki.loadScriptSync('js/core/loader.js');
+

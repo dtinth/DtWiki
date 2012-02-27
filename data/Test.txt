@@ -2,4 +2,4 @@
 Test
 ====
 
-Hello world! This is __DtWiki Test Page!__
+[[Test|Hello world!]] This is __DtWiki [[Test]] Page!__ 

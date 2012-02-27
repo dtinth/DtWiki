@@ -8,6 +8,8 @@
 
 DtWiki.loadScriptSync('js/plugin/markdown/lib/Markdown.Converter.js');
 
+DtWiki.hook('converter:markdown', DtWiki.linkifyHook());
+
 DtWiki.hook('converter:markdown', function(callback) {
 	var converter = new Markdown.Converter();
 	this.html = converter.makeHtml(this.text).replace(/>\s*((?:[\.#][a-z0-9\-_]+)+):/g, function(all, data) {

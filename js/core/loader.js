@@ -18,6 +18,24 @@ DtWiki.hook('load', function(next) {
 	next();
 }, 0);
 
+DtWiki.linkifySuffix = DtWiki.linkifySuffix || '.txt';
+
+DtWiki.linkifyHook = function() {
+	function url(x) {
+		if (!x.match(/\.\w+$/)) {
+			return '?' + new URI(x + DtWiki.linkifySuffix).resolve(DtWiki.baseURI);
+		} else {
+			return new URI(x).resolve(DtWiki.baseURI);
+		}
+	}
+	return function(next) {
+		this.text = this.text.replace(/\[\[(.*?\|)?([\s\S]*?)\]\]/g, function(a, b, c) {
+			return '<a href="' + url(b == null || b == '' ? c : b.substr(0, b.length - 1)) + '">' + c + '</a>';
+		});
+		next();
+	};
+};
+
 /**
  * Loads a page from a URL
  * @param url the url
@@ -29,6 +47,7 @@ DtWiki.loadPage = function(url) {
 		success: function(data) {
 			if (loaded) return;
 			loaded = true;
+			DtWiki.baseURI = new URI(url);
 			DtWiki.processText(data, function(err, html) {
 				DtWiki.display(data, html);
 			});
