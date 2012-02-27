@@ -11,7 +11,7 @@ DtWiki.hook('load', function(next) {
 	var m = location.search.match(/^\??(.+)/);
 	if (m) {
 		var url = m[1];
-		DtWiki.loadPage(url);
+		DtWiki.loadPage(url.replace(/\+/g, '%20'));
 	} else {
 		DtWiki.displayError('No text file specified.');
 	}
