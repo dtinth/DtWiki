@@ -1,0 +1,109 @@
+body {
+	font: 10pt Verdana, sans-serif;
+	margin: 0; padding: 0;
+	background: #252423;
+	overflow: hidden;
+	color: #e9e8e7;
+}
+body.km-public {
+	background: #353433;
+	overflow: auto;
+}
+a {
+	color: #ffb;
+}
+
+.km-content-data {
+	padding: 20px;
+	font-size: 10.5pt;
+	line-height: 1.8;
+	text-align: center;
+}
+
+.km-center-align {
+	text-align: left;
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.km-content-data p, .km-content-data ul, .km-content-data ol, .km-content-data pre, .km-content-data .syntaxhighlighter {
+	margin: 1em 0;
+	padding: 0;
+}
+.km-content-data ul ul,
+.km-content-data ul ol,
+.km-content-data ol ul,
+.km-content-data ol ol {
+	margin: 0.2em 0;
+}
+.km-content-data h1, .km-content-data h2 {
+	margin: 0.5em 0;
+}
+.km-content-data h2 {
+	margin-top: 2em;
+	padding-top: 1.5em;
+}
+.km-content-data h3 {
+	color: #ace;
+}
+.km-content-data ul, .km-content-data ol, .km-content-data pre {
+	padding-left: 2.5em;
+}
+.km-content-data h1 {
+	color: #8b8685;
+	font: bold 30pt/1.2 Free Sans, FreeSans, Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+.km-content-data h2 {
+	color: #d7fc70;
+	border-top: 2px solid #4e4c4b;
+	font-size: 1.5em;
+}
+.km-content-data hr {
+	margin-top: 2em;
+	margin-bottom: 2em;
+	font-size: 1.5em;
+	height: 0;
+	border: 0;
+	padding: 0;
+	border-top: 2px solid #4e4c4b;
+}
+.km-content-data img {
+	max-width: 640px;
+}
+.km-content-data .image-container {
+	text-align: center;
+}
+.km-content-data pre {
+	white-space: pre-wrap;
+	background: #252423;
+	padding: 1em;
+}
+.km-content-data p code,
+.km-content-data li code {
+	border: 1px solid #454443;
+	background: #252423;
+	padding: 2px 3px;
+	border-radius: 3px;
+}
+
+.km-content-data .caption { text-align: center; font-style: italic; color: #a9a8a7; margin-top: -1em; font-size: 0.9em; }
+.km-content-data .center { text-align: center; }
+
+pre, code {
+	font-size: 1em;
+	font-family: Consolas, Monaco, DejaVu Sans Mono, monospace;
+}
+
+.km-meta, .km-meta a { color: #8b8685; }
+.km-content-data p.km-meta { padding-top: 2em; }
+.km-loading {
+	text-align: center;
+	padding: 20px 0;
+}
+
+.prettyprint .str { color: #F8F199; }
+.prettyprint .lit { color: #E18B8A; }
+.prettyprint .kwd { color: #E3B478; font-weight: bold; }
+.prettyprint .typ { color: #DF9983; }
+.prettyprint .com { color: #9BE47A; }
