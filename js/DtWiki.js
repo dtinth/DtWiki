@@ -20,10 +20,15 @@ DtWiki.loadScriptSync = function(path) {
 // create a hook queue
 DtWiki.createHookable = function() {
 	var handlers = [];
+	var hookName = '(unnamed hook)';
 	return {
 		addHandler: function(handler, priority) {
 			priority = priority || 0;
 			handlers.push({ handler: handler, priority: priority });
+		},
+		setName: function(name) {
+			hookName = name;
+			return this;
 		},
 		notify: function(context, callback) {
 			context = context || null;
@@ -46,8 +51,9 @@ DtWiki.createHookable = function() {
 				if (index >= currentHandlers.length) {
 					return callback && callback.call(context, null);
 				}
+				window.console && console.log && console.log(hookName + ', priority ' + currentHandlers[index].priority);
 				try {
-					handlers[index].handler.call(context, next);
+					currentHandlers[index].handler.call(context, next);
 				} catch (e) {
 					next(e);
 				}
@@ -67,7 +73,7 @@ DtWiki.hooks = {};
  * @param priority the priority, lower number runs first
  */
 DtWiki.hook = function(name, handler, priority) {
-	var hookable = DtWiki.hooks[name] || (DtWiki.hooks[name] = DtWiki.createHookable());
+	var hookable = DtWiki.hooks[name] || (DtWiki.hooks[name] = DtWiki.createHookable().setName(name));
 	hookable.addHandler(handler, priority);
 };
 
@@ -78,7 +84,7 @@ DtWiki.hook = function(name, handler, priority) {
  * @param callback the function to be run when it finished, receives one argument "error". If it is null then everything went fine.
  */
 DtWiki.runHook = function(name, context, callback) {
-	console && console.log && console.log('hook called: ' + name);
+	window.console && console.log && console.log('hook called: ' + name);
 	var hookable = DtWiki.hooks[name];
 	if (hookable) hookable.notify(context, callback);
 };
