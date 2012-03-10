@@ -8,6 +8,10 @@
 
 // when all scripts are loaded, load page from url and display
 DtWiki.hook('load', function(next) {
+	if ($('#km-content').attr('data-noload') == 'true') {
+		document.title = $('#km-content').attr('data-title');
+		return next();
+	}
 	var m = location.search.match(/^\??(.+)/);
 	if (m) {
 		var url = m[1];
@@ -81,6 +85,7 @@ DtWiki.displayError = function(message) {
 DtWiki.hook('display', function(next) {
 	$('#km-content').html(this.html);
 	document.title = $('#km-content h1').text();
+	$('#km-content').attr('data-title', document.title).attr('data-noload', 'true');
 	next();
 });
 
